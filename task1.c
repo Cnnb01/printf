@@ -26,6 +26,17 @@ if (*format == '\0') /* Check for '%' at the end */
 break;
 switch (*format)
 {
+case 'c':
+putchar(va_arg(args, int));
+count++;
+break;
+case 's':
+count += _printstr(va_arg(args, char *));
+break;
+case '%':
+putchar('%');
+count++;
+break;
 case 'i':
 printf("%i", va_arg(args, int));
 count++;
