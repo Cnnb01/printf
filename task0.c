@@ -9,45 +9,45 @@
 */
 int _printf(const char *format, ...)
 {
-    va_list args;
-    int count = 0;
-    va_start(args, format);
-    while (format && *format)
-    {
-        if (*format != '%')
-        {
-            putchar(*format);
-            count++;
-        }
-        else
-        {
-            format++; // Move past '%'
-            if (*format == '\0') // Check for '%' at the end
-                break;
-            switch (*format)
-            {
-                case 'c':
-                    putchar(va_arg(args, int));
-                    count++;
-                    break;
-                case 's':
-                    count += _printstr(va_arg(args, char *));
-                    break;
-                case '%':
-                    putchar('%');
-                    count++;
-                    break;
-                default:
-                    putchar('%');
-                    putchar(*format);
-                    count += 2;
-                    break;
-            }
-        }
-        format++;
-    }
-    va_end(args);
-    return count;
+va_list args;
+int count = 0;
+va_start(args, format);
+while (format && *format)
+{
+if (*format != '%')
+{
+putchar(*format);
+count++;
+}
+else
+{
+format++; /* Move past '%'*/
+if (*format == '\0') /* Check for '%' at the end */
+break;
+switch (*format)
+{
+case 'c':
+putchar(va_arg(args, int));
+count++;
+break;
+case 's':
+count += _printstr(va_arg(args, char *));
+break;
+case '%':
+putchar('%');
+count++;
+break;
+default:
+putchar('%');
+putchar(*format);
+count += 2;
+break;
+}
+}
+format++;
+}
+va_end(args);
+return (count);
 }
 /**
  * _printstr - Print a string and return its length.
@@ -57,14 +57,14 @@ int _printf(const char *format, ...)
  */
 int _printstr(const char *str)
 {
-    int count = 0;
-    if (str == NULL)
-        str = "(null)";
-    while (*str)
-    {
-        putchar(*str);
-        str++;
-        count++;
-    }
-    return count;
+int count = 0;
+if (str == NULL)
+str = "(null)";
+while (*str)
+{
+putchar(*str);
+str++;
+count++;
+}
+return (count);
 }
