@@ -28,14 +28,16 @@ switch (*format)
 {
 case 'i':
 printf("%i", va_arg(args, int));
+count++;
 break;
 case 'd':
 printf("%d", va_arg(args, int));
+count++;
 break;
 default:
 putchar('%');
 putchar(*format);
-count += 2;
+count++;
 break;
 }
 }
