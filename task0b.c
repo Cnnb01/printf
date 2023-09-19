@@ -17,7 +17,7 @@ write(1, str, 1);
 str++;
 count++;
 }
-return (count);
+return (write(1, str, count));
 }
 /**
  * print_char - Print a character.
@@ -28,8 +28,7 @@ return (count);
 int print_char(va_list args)
 {
 char a = va_arg(args, int);
-write(1, &a, 1);
-return (1);
+return (write(1, &a, 1));
 }
 /**
  * print_string - Print a string.
@@ -51,7 +50,6 @@ return (_printstr(s));
 int print_percent(va_list args)
 {
 (void)args;
-write(1, "%%", 1);
+return (write(1, "%%", 1));
 
-return (1);
 }
