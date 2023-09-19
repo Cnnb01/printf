@@ -1,24 +1,5 @@
 #include "main.h"
-
-/**
- * _printstr - Print a string and return its length.
- * @str: The string to print.
- *
- * Return: The length of the string.
- */
-int _printstr(const char *str)
-{
-int count = 0;
-if (str == NULL)
-str = "(null)";
-while (*str != '\0')
-{
-write(1, str, 1);
-str++;
-count++;
-}
-return (count);
-}
+#include <string.h>
 /**
  * print_char - Print a character.
  * @args: The arguments list.
@@ -39,10 +20,7 @@ return (write(1, &a, 1));
 int print_string(va_list args)
 {
 char *s = va_arg(args, char *);
-
-if (s == NULL)
-s = "(null)";
-return (_printstr(s));
+return (write(1, s, strlen(s)));
 }
 /**
  * print_percent - Print a percent character.
@@ -52,7 +30,6 @@ return (_printstr(s));
  */
 int print_percent(va_list args)
 {
-(void)args;
+(void) args;
 return (write(1, "%%", 1));
-
 }
