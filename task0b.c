@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
-
 /**
- * _printf - Print formatted output to stdout.
- * @format: The format string containing directives.
- *
- * Return: The number of characters printed (excluding the null byte).
- */
+* _printf - Print formatted output to stdout.
+* @format: The format string containing directives.
+*
+* Return: The number of characters printed (excluding the null byte).
+*/
 int _printf(const char *format, ...)
 {
 va_list args;
@@ -22,14 +21,20 @@ count++;
 }
 else
 {
-format++;
-if (*format == '\0')
+format++; /* Move past '%'*/
+if (*format == '\0') /* Check for '%' at the end */
 break;
 switch (*format)
 {
 case 'c':
 putchar(va_arg(args, int));
 count++;
+break;
+case 'i':
+printf("%d", va_arg(args, int));
+break;
+case 'd':
+printf("%d", va_arg(args, int));
 break;
 case 's':
 count += _printstr(va_arg(args, char *));
