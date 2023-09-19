@@ -1,35 +1,71 @@
+#include <stdio.h>
+#include <stdarg.h>
 #include "main.h"
-#include <string.h>
+
 /**
- * print_char - Print a character.
- * @args: The arguments list.
+ * _printf - Print formatted output to stdout.
+ * @format: The format string containing directives.
  *
- * Return: The number of characters printed.
+ * Return: The number of characters printed (excluding the null byte).
  */
-int print_char(va_list args)
+int _printf(const char *format, ...)
 {
-char a = va_arg(args, int);
-return (write(1, &a, 1));
+va_list args;
+int count = 0;
+va_start(args, format);
+while (format && *format)
+{
+if (*format != '%')
+{
+putchar(*format);
+count++;
+}
+else
+{
+format++;
+if (*format == '\0')
+break;
+switch (*format)
+{
+case 'c':
+putchar(va_arg(args, int));
+count++;
+break;
+case 's':
+count += _printstr(va_arg(args, char *));
+break;
+case '%':
+putchar('%');
+count++;
+break;
+default:
+putchar('%');
+putchar(*format);
+count += 2;
+break;
+}
+}
+format++;
+}
+va_end(args);
+return (count);
 }
 /**
- * print_string - Print a string.
- * @args: The arguments list.
+ * _printstr - Print a string and return its length.
+ * @str: The string to print.
  *
- * Return: The number of characters printed.
+ * Return: The length of the string.
  */
-int print_string(va_list args)
+int _printstr(const char *str)
 {
-char *s = va_arg(args, char *);
-return (write(1, s, strlen(s)));
+int count = 0;
+if (str == NULL)
+str = "(null)";
+while (*str)
+{
+putchar(*str);
+str++;
+count++;
 }
-/**
- * print_percent - Print a percent character.
- * @args: The arguments list.
- *
- * Return: The number of characters printed.
- */
-int print_percent(va_list args)
-{
-(void) args;
-return (write(1, "%%", 1));
+return (count);
 }
