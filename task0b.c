@@ -1,50 +1,5 @@
 #include "main.h"
-/**
- * _printef - Print formatted output to stdout.
- * @format: The format string containing directives.
- *
- * Return: The number of characters printed (excluding the null byte).
- */
-int _printef(const char *format, ...)
-{
-va_list args;
-int count = 0;
-va_start(args, format);
-while (format && *format)
-{
-if (*format != '%')
-{
-write(1, format, 1);
-count++;
-}
-else
-{
-format++;
-if (*format == '\0')
-break;
-switch (*format)
-{
-case 'c':
-count += print_char(args);
-break;
-case 's':
-count += print_string(args);
-break;
-case '%':
-count += print_percent(args);
-break;
-default:
-putchar('%');
-putchar(*format);
-count += 2;
-break;
-}
-}
-format++;
-}
-va_end(args);
-return (count);
-}
+
 /**
  * _printstr - Print a string and return its length.
  * @str: The string to print.

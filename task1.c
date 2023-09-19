@@ -1,6 +1,7 @@
 #include "main.h"
 /**
 *_printint - Print out a number.
+*@args: A va_list containing the integer to be printed.
 * Return: The number.
 */
 int _printint(va_list args)
