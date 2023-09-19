@@ -1,33 +1,34 @@
-#include <stdarg.h>
-
-#include <stdio.h>
-
-/* _printint - Print out an integer.
- *@args: A va_list containing the integer to be printed.
-
-*Return: The number of characters printed. */ 
+#include "main.h"
+/**
+*_printint - Print out a number.
+*@args: A va_list containing the integer to be printed.
+* Return: The number.
+*/
 int _printint(va_list args)
 {
-       	int num = va_arg(args, int);
-	int count = 0;
-	int negative = num < 0;
+int a = va_arg(args, int);
+int count = 0;
+int nega = 0;
+int num, reversed = 0;
 
-if (negative)
+if (a < 0)
 {
-       	num = -num;
-       	count += putchar('-');
+putchar ('-');
+a = -a;
+nega++;
 }
-
-if (num == 0) 
-{ 
-	count += putchar('0');
-       	return count;
-}
-
-while (num > 0)
+while (a > 0)
 {
-       	count += putchar((num % 10) + '0');
-       	num = num / 10; }
-
-return (count);
+num = a % 10;
+reversed = reversed * 10 + num;
+a = a / 10;
+}
+while (reversed > 0)
+{
+num = reversed % 10;
+putchar('0' + num);
+reversed = reversed / 10;
+count++;
+}
+return (reversed);
 }
