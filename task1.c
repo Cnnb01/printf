@@ -10,7 +10,6 @@ int a = va_arg(args, int);
 int count = 0;
 int nega = 0;
 int num, reversed = 0;
-(void)formatter;
 
 if (a < 0)
 {
