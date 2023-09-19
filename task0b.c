@@ -17,7 +17,7 @@ write(1, str, 1);
 str++;
 count++;
 }
-return (write(1, str, count));
+return (count);
 }
 /**
  * print_char - Print a character.
@@ -39,6 +39,9 @@ return (write(1, &a, 1));
 int print_string(va_list args)
 {
 char *s = va_arg(args, char *);
+
+if (s == NULL)
+s = "(null)";
 return (_printstr(s));
 }
 /**
