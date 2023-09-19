@@ -1,77 +1,33 @@
-#include <stdio.h>
-#include <stdarg.h>
 #include "main.h"
 /**
-* _printf - Print formatted output to stdout.
-* @format: The format string containing directives.
-*
-* Return: The number of characters printed (excluding the null byte).
+*_printint - Print out a number.
+* Return: The number.
 */
-int _printf(const char *format, ...)
+int _printint(va_list args)
 {
-va_list args;
+int a = va_arg(args, int);
 int count = 0;
-va_start(args, format);
-while (format && *format)
+int nega = 0;
+int num, reversed = 0;
+(void)formatter;
+
+if (a < 0)
 {
-if (*format != '%')
-{
-putchar(*format);
-count++;
+putchar ('-');
+a = -a;
+nega++;
 }
-else
+while (a > 0)
 {
-format++; /* Move past '%'*/
-if (*format == '\0') /* Check for '%' at the end */
-break;
-switch (*format)
+num = a % 10;
+reversed = reversed * 10 + num;
+a = a / 10;
+}
+while (reversed > 0)
 {
-case 'c':
-putchar(va_arg(args, int));
-count++;
-break;
-case 's':
-count += _printstr(va_arg(args, char *));
-break;
-case '%':
-putchar('%');
-count++;
-break;
-case 'i':
-printf("%i", va_arg(args, int));
-count++;
-break;
-case 'd':
-printf("%d", va_arg(args, int));
-count++;
-break;
-default:
-putchar('%');
-putchar(*format);
-count++;
-break;
-}
-}
-format++;
-}
-va_end(args);
-return (count);
-}
-/**
- * _printstr - Print a string and return its length.
- * @str: The string to print.
- *
- * Return: The length of the string.
- */
-int _printstr(const char *str)
-{
-int count = 0;
-if (str == NULL)
-str = "(null)";
-while (*str)
-{
-putchar(*str);
-str++;
+num = reversed % 10;
+putchar('0' + num);
+reversed = reversed / 10;
 count++;
 }
 return (count);
