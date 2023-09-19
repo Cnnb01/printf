@@ -7,37 +7,35 @@
  */
 int _printf(const char *format, ...)
 {
+int ipoint = 0;
 va_list args;
 int count = 0;
 va_start(args, format);
-while (format && *format)
+while (format[ipoint] != '\0' )
 {
-if (*format != '%')
+if (format[ipoint] != '%')
 {
-write(1, format, 1);
+write(1, &(format[ipoint]), 1);
 count++;
 }
 else
 {
-format++;
+ipoint++;
 while (*format != '\0')
 {
-int ipoint = 0;
 int (*counter)(va_list) = formatter(format, &ipoint);
-
 if (counter)
 {
 count += counter(args);
-format += ipoint;
 }
 else
 {
 count += write(1, "ERROR", 5);
 }
-}
-}
+}}
 format++;
 }
+ipoint++;
 va_end(args);
 return (count);
 }
