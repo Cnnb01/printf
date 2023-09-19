@@ -1,34 +1,48 @@
 #include "main.h"
 /**
-*_printint - Print out a number.
-*@args: A va_list containing the integer to be printed.
-* Return: The number.
+ * pnumber - Rcursively prints out an integer.
+ * @dig: the integer to be printed.
+ *
+ * description: function that recursively print an integer 'dig'.
+ * if 'dig' is equal to INT_MIN it handle a special case for INT_MIN.
+ * return: number of char printed.
 */
+int pnumber(int dig)
+{
+int count = 0;
+if (dig == INT_MIN)
+{
+putchar('-');
+count++;
+count += pnumber(INT_MAX / 10);
+putchar(INT_MAX % 10 + 1 + '0');
+count++;
+return (count);
+}
+else if (dig < 0)
+{
+putchar('-');
+count++;
+dig = -dig;
+}
+if (dig >= 10)
+{
+count += pnumber(dig / 10);
+}
+putchar(dig % 10 + '0');
+count++;
+return (count);
+}
+
+/**
+ * _printint - print out integer using pnumber.
+ * @args: va_list containing number of integers to be printed.
+ *
+ * description: the function serves as a wrapper for the pnumber function.
+ * return: number of characters printed.
+ */
 int _printint(va_list args)
 {
-int a = va_arg(args, int);
-int count = 0;
-int nega = 0;
-int num, reversed = 0;
-
-if (a < 0)
-{
-putchar ('-');
-a = -a;
-nega++;
-}
-while (a > 0)
-{
-num = a % 10;
-reversed = reversed * 10 + num;
-a = a / 10;
-}
-while (reversed > 0)
-{
-num = reversed % 10;
-putchar('0' + num);
-reversed = reversed / 10;
-count++;
-}
-return (reversed);
+int numb = va_arg(args, int);
+return (pnumber(numb));
 }
