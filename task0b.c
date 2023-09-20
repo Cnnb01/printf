@@ -20,6 +20,10 @@ return (write(1, &a, 1));
 int print_string(va_list args)
 {
 char *s = va_arg(args, char *);
+if (s == NULL)
+{
+return (0);
+}
 return (write(1, s, strlen(s)));
 }
 /**
@@ -31,4 +35,5 @@ return (write(1, s, strlen(s)));
 int print_percent(va_list agrs)
 {
 (void) agrs;
-return (write(1, "%%", 1));}
+return (write(1, "%%", 1));
+}

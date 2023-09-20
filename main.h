@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
+#include <stdlib.h>
+#include <string.h>
 struct case_fmt
 {
 char ch;

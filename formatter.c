@@ -17,10 +17,6 @@ if (form[i].ch == format[*ipoint])
 {
 return (form[i].fun);
 }
-/**else
-{
-write(1, "error", 5);
-}*/
 i++;
 }
 return (NULL);
