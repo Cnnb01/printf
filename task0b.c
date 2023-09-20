@@ -32,8 +32,8 @@ return (write(1, s, strlen(s)));
  *
  * Return: The number of characters printed.
  */
-int print_percent(va_list agrs)
+int print_percent(va_list args)
 {
-(void) agrs;
+(void) args;
 return (write(1, "%%", 1));
 }

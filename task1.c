@@ -31,7 +31,7 @@ count += pnumber(dig / 10);
 putchar(dig % 10 + '0');
 count++;
 return (count);
-   }
+}
 /**
 * _printint - Print an integer using pnumber.
 * @args: The arguments list.

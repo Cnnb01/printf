@@ -13,7 +13,7 @@ int count = 0;
 int (*printer)(va_list);
 
 va_start(args, format);
-while (format[ipoint] != '\0' )
+while (format[ipoint] != '\0')
 {
 if (format[ipoint] == '%' && format[ipoint + 1] != '\0')
 {
@@ -29,7 +29,6 @@ ipoint--;
 count += write(1, &format[ipoint], 1);
 }
 }
-
 else
 {
 count += write(1, &format[ipoint], 1);
