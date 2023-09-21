@@ -21,6 +21,6 @@ int print_percent(va_list args);
 int _printf(const char *format, ...);
 int print_binary(va_list args);
 int pnumber(int dig);
-int _printint(va_list args);
+int _printint( va_list args);
 int (*formatter(const char *format, int *ipoint))(va_list);
 #endif /*main_h*/

@@ -1,11 +1,9 @@
 #include "main.h"
-
 /**
 * _printbuff - write formatted text to a buffer
 * @buffer: the buffer to write to
 * @str: the format string
 * @args: argument list
-*
 * return: number of characters written on a buffer
 */
 int _printbuff(char *buffer, const char *str, va_list args)
@@ -26,9 +24,31 @@ buff_index = 0;
 }
 }
 else
-{/*format specifiers here*/}
-str++
-}
+/**if (*str == '%') {
+str++; 
+switch (*str) {
+case 's':
+count += print_string(buffer + buff_index, args);
+break;
+case 'd':
+case 'i':
+count += _printint(buffer + buff_index, args);
+break;
+case 'c':
+count += print_char(buffer + buff_index, args);
+break;
+case '%':
+count += print_percent(buffer + buff_index, args);
+break;
+case 'b':
+count += print_binary(buffer + buff_index, args);
+break;
+default:
+putchar('%');
+putchar(*formatter);
+count += 2;
+break;
+}*/
 if (buff_index > 0)
 {
 write (1, buffer, buff_index);
