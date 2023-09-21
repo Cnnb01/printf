@@ -11,7 +11,7 @@ int (*formatter(const char *format, int *ipoint))(va_list)
 int i = 0;
 fmt form[] = {
 {'c', print_char}, {'s', print_string}, {'%', print_percent},
-{'d', _printint}, {'i', _printint},
+{'d', _printint}, {'i', _printint}, {'b', print_binary},
 {'\0', NULL}
 };
 while (form[i].ch != '\0')
