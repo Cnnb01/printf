@@ -12,6 +12,8 @@ int i = 0;
 fmt form[] = {
 {'c', print_char}, {'s', print_string}, {'%', print_percent},
 {'d', _printint}, {'i', _printint}, {'b', print_binary},
+{'u', print_unsigned}, {'o', print_octal}, {'x', print_hex_lower}, 
+{'X', print_hex_upper},
 {'\0', NULL}
 };
 while (form[i].ch != '\0')

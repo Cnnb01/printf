@@ -23,4 +23,8 @@ int print_binary(va_list args);
 int pnumber(int dig);
 int _printint( va_list args);
 int (*formatter(const char *format, int *ipoint))(va_list);
+int print_unsigned(va_list args);
+int print_octal(va_list args);
+int print_hex_lower(va_list args);
+int print_hex_upper(va_list args);
 #endif /*main_h*/
